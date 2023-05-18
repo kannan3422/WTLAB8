@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=titZ8O1BIHJWDYAqXmBgGI-BGYNdwpCvYiQemLolsY1bOwG-L_csOD9cMiQlTan2ziOlLnScyPqsANGy_XUnalnrozxBBl0iaoDuSUviZ2aBnoSkIv2eHCqQDcIaP4EPikjLVOEvjrCgoRqfodLFkRpVq_osYh6TUaeiSd9nojlk89Xu1hlfpiIbqb0Ep-k0QF58wB9oLgEFW8x_Ob5oP5cbglKkLa5zk1V9C49ZbIjIEuM_ockQYhI2Sdk4u3texxINURyZ35FLtO3yTo_-vaQrnSk_9GTv8llZbp3MNU8-ym47_5p9t-DJIOct7_S2GPtAGX_bbzcCotbGQ_kN7tsuetBehRO7Bhol853gFTMibQO3tOX4eop3Bx5rwCvuk134teJjmLTriiZcVZntnKR9EgKxham49BmHtucCJzAmUKone4gH5t8AUWxrXwt0OD1b-AtS21klNWAvYZimmk8s4Hz6xRm8L6gHaIrLfpW8rfunTvVrg6x1igqAp3JNHK47vw1Ixcw5AYab--9egXFSBSwzaIWTqQzFMlKaq5dPx5ZWy0YW4IQOP8w-aR1DXHhhg2lUJhznR5e67ls8yhSVBG2jqJIiOUmNXwgPYFphTDZcGFJxVlo-ml6ZcXHDM_VfPa6gVkvutDRAxBI9eIXhUsNXtQipu5b7FeWYXmyE-mMDWIzvRMMyIYIAZwCvyVZy3fiMghRmbUiha48KOXiZUCVE21ivg5k82E9mbHgV5h2GIJ5f5_s8L4V2FPeiCqaGRR3L2PwE-c9F2odJToezxmeOsMU-H0cglDN_nQiBByBfAh_TdJ7KzH8J7u_FLvVCoi3JnJkZzTNTxISD-j-xQqtNYyhZM34Qp7dnHK8sL2gnLqidr9ZntWm4QiAgqcU3-jBDGHFhFR8Z_rbIZM2Ium28Ik47MTC2iOcT1QlE0q5hXKidCY9RYHCyIbfawzir1ZC2qKMXVYmrynVGhJ44d7UEM5p1H8wecm-xeGfg_HP3aNm7sYvIexB52SV_cmVJql_ZI4sx4MVWsDQpaCHxQB1EueYGaSKMfvDnBALyw6bgu07hSqZWhMZz76UE9fbxtEnw9WvR4jtVzbJzEvSK88nYby9Gnj4-uJsI5eLuT4qWesma5lALTxdUpj9F3ik8eegC5F7ZuFZR7KQAAi0EqAw4m8JnJQEBSlDSE2hMPjLr-YjRTeH6uPjUKWYB5ETHQekFKXni25qFC5Ro4L1ZGk5bDgD5dXARbKbAYWEPLTK3qldG6-qYemIosqrOUjotssmmNi4W5_BOAxnLSMbYLJEu01eck1hz0lRPpDWwBh79ZVpeS1mbiulXMWBKM3E_ju_e1_R86d4XQKUp7K0FU-iictR_AMb93tdPfJLlm5oU7aYk9hfqrjdcxXQgn9NZLkoljlyJZqUusKrw4tewKJcsGsLw1lQtQsRY1gT6lq-QYKr6B1Uz0C-VJiYT9mXb_wrKyOzOIJfxWgMf2DHAqh6JPTdvsQoc1zeBm-WTyrWneDKGEU9ieYpwsbnDUw2JQhX3mbfu0K0fJu96kjFxVN0qM6HhkeIHRVPqjQo2YkKE8J7gqm8f_JjOYIZXnXJpewlZojsytUao4Wtr9B9ohr7J4fFukJwOW8ctVKYwkRVbqBrXPSUJEIhLR09j" nonce="e581e8bb937bac7bb58738c254275a0f" charset="UTF-8"></script></head>
+<body>
+    <form>
+        Book id <input type="number" name="bid" id="bid"> <br><br>
+        Book name <input type="text" name="bname" id="bname"> <br><br>
+        Publisher name <input type="text" id="pname"> <br><br>
+        Category <input type="text" name="cate" id="cate"> <br> <br>
+        Price <input type="number" name="price" id="price"> <br><br>
+        <input type="button" name="insert" value="insert" id="insert"> <br><br>
+    </form>
+    <p id="res"></p>
+    
+</body>
+
+<script>
+    const bid = document.getElementById('bid');
+    const bname = document.getElementById('bname');
+    const pname = document.getElementById('pname');
+    const cate = document.getElementById('cate');
+    const price = document.getElementById('price');
+    const insert = document.getElementById('insert');
+    const result = document.getElementById('res')
+
+
+    insert.addEventListener('click',()=>{
+        var data = {
+            bid: parseInt(bid.value),
+            bname: bname.value,
+            pname: pname.value,
+            cate: cate.value,
+            price: parseInt(price.value),
+        }
+        fetch('http://localhost:9000/api/books',{
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json; chatset=UTF-8'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => {return res.json()})
+        .then(res => {result.innerText = JSON.stringify(res)});
+
+    })
+</script>
+</html>

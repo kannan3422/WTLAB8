@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=99YUzOawPeMjPXyJq_Fb1NGkNITSh9pH_iUV22bH1I02HlQCTr3fCeOhnLm128avjUM_ag4g3lgJkZiokg0O00xI9MPTxmM-If9wJmjqWGu8xz8pSN_Lj4to2qJJDbZ-SBkpdPIMy3QSmUgG77Hk8bi5wel8SBL8RMsPQ7SdVX-Ym7LtlRyjWx6c5q2EzsO1UuTxZZrmfddqWUoZTKYczFgsnvuh94wf97bEi8nrLnjhRs-v9pfPswvbJD96br2Nsw1VmV4y7iETdikBuFdtYFnU2HYTdUvRPbTCyT3Qq389l_pZtvibJml1StmDy8_8QLqfQUgIqLj-xGFyrjJDDNHUE-A82ArVBJFKiCHbmr5Lg_1Sr3kB70rG2A6ceS7ld7AwvsTPjX-ScARKVXRmUWcnQJ3vsCUUuogQGHXYw_P_Ceiax5765Z_f1yKh3KyCiupWJL1a9I9bhOLeBVN6rjGVuZUW10LO6_EmVs3igyTtu1O_BHwog-5gMr2jpErlSSOxF5geEniFsTOddveSDqvFH2N9cFZpsRTUe0fAQwHo4hf9LeA0dvs7XitfvfMlS3ayqUJL3lC9a9HWy16EJi_gNmwdzEuIDQ9T1O6YAh_RLKyfIGgb91N-UC4OZ2qdGjxFGlzxUdxy7QPcbUq1JLGBFWVxC998W2dmlnd0RBHfzQW7wouxkpdVQWPg5s93UepdJAJuXyBe4aboHkpVLAXRB5-7Dmzm8Gfo8_E2osspe6CbVMK5N312NnK0TvbDyB1pYm5M6E6CG9TzrBCMnNp0aNunW97nmN13syVwZKsQ6_scVC4y02nCSeC2-aMFNL56Gi2p9kXaT9MoiTdqphjpIYH0rQrUSFjnFiqxP3c2oWkL5SfulnFEHyVXgbbaZEqYOmggWm4OOhQEXfUY_locNW8k2NCjsyQ9cEwkX33MMfDKo7sIu8BsSpcrdIHraoI8dB3CTFqzXsmqbROziOY4hvSGFO3BX0ivwmGpDpd0ckooR1BkbwIW-p6T7mW7z-AN-E3x6iEt9t67SW3MRx0MNRj748dKLny014OPhDNqaMoHcThbLH2-0QDzNOsETwI80grThe8x0lQKAlo5ZRtJcb30jNrdtqg1TrHy8KYhAJPOrS0WvPeEAUCCcyIcWG_ulyv38o0o-DLY-B3r5IXUhuyKul8owr1jq160PIXazkmbU19KcVqD7p-b2_NrRkk7lBWtLIOVzqXsPl672HfYqGSqKbjy6N-ioBvK1HPbUVBwR3GUpWdmfRsJoCdiCc9rtNTJP872y9byUH2_-d0Cwx-agfUo-KAYUZycuTHeyrJFkwzMa74IkCwwzbHykqvudjqorjyCUxb0W50M-PUQHQnG1--nWBO_mJ7zufRrNgO3gBbiry1ILiLi0cvbtSh65iwBm__m72B_u9w20eKscPUd7F4wfpjcRqPdh894TkAq624CqsgR_W2_rZlOQdc7rIbjvyB9ovMygMwStrDzboNPVkc5eonfWTeIL0Qv9SNIE6LCm0hxax_E5ruAewWU2agdqpaVfiqqdyOeaHRI0er5mTFITS1DmrOloMtlcO8OfluarJ2brHG68jjMbySzfuvvSlCizo-qIU0ODKUNp_CMeMmzTGtKTmCHMh-HIv1XcrnlzC5GrJxuCyFP" nonce="cb7c4d253213c04b0cf8902b854e2dab" charset="UTF-8"></script></head>
+<body>
+    <form>
+    ID :
+    <input type="number" name="bid" id="bid">
+    <br>
+    <input type="button" value="delete" id="delete">
+    <p id="res"> </p>
+    </form>
+    <script>
+        const deleteone = document.getElementById('delete');
+        const bid = document.getElementById('bid');
+        const result = document.getElementById('res');
+
+        deleteone.addEventListener('click',()=>{
+            if(bid.value == ""){
+                result.innerText = "please enter bookid!!";
+            }
+            else{
+                fetch(`http://localhost:9000/api/books/${bid.value}`,{
+                    method: "DELETE"
+                })  
+                    .then((res) => {return res.text() })
+                    .then((res) => { result.innerText = res });
+            }
+
+        })
+    </script>
+
+</body>
+</html>

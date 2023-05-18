@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=RQYiEY9QAO7VGZ4N2zcxE4-rZvstA9Q6gQdoGUK8wHKUnnlDjlbWMFhldcvFfyGTr0KoBovSHVPGyJYQeJXQvecyVOf-g3stXgY3o8SJMQTENhIfqNifopjdb35Lm17bBhGs6Eu1iEuhnW3C3S4aq-SgB55Q1l3sZJH5NFwOCR31_Sa-yMoo3P7vnbG5NJTvNC9xpssibg5bPtlNRP7oywNJrj4IsOeBDVnVsDpa6i14ASXRGd7-Mg4tQXwt5C3hTFQPaeXGZ1MRHCdy38yCmkgNzX8s7zvge-xYQ6t8TXdJ8TeLTO573jDHugbWt-x-k3HfCSxy-SuMLK4O70WHsLJCYp0d1zVhoPpohmU2v_7wWjPk3pnv6jWp8_X3rBJBydO7ZS30Awb2fYuV0lUdMJE1KhgpkOrHlf7JwRuWJHG6zc6ef4eGjLGhf5Aqz189-sL21wku5OC3PVTgi41Y213tp6seD8IGuuHCvUC_goCBIUarZym0UfE-D6RxvsBCQ05wEhlSvKFNa270aG0AvaTRJc3WSNJzraSCLJRVpR-d9YWPGUbAx-ttwgmEQN0T9j7AKGBhBC9_zaV5lTzXJnG5swNM7Cpxh9sWEHzpEtrqCBmShhC6FeHKYO1KbzjVbVwp2bAi1XeVsz3GXdhNyp24DIR-Kxrv3p-GIS86hi8lj3nv5ehsVQyudVHOluxjQoySenHGB6TB1U52isnU9PXy_w0idfdd7444XXhNvnjUeBwO2gJ99lx8ujJyCS4aFnJuY_bHdUEDhXlQWAnmeLKaJXVvAiiInX3TCTT2TMX9h2wUnzh0xcFbPBOVrqtjWAYk8GeVEesUUjdnJYc6OptqsZrefxVekfiJu76i2fUFcB1F9jmjkPjSA1frVyLW8LIHfUrQOdQWLV-gft2fsRsxLTfTSM9FmSMRAnjWN9OSPplyFb4KCTyJe84Slw8ReMAwQ6wAYZwzcuutxMEa_8zlMmo2Fa_z3_pGnxeNUvgpZHZ7ql8HOtBU0rd9rwqu2HWpEmKjGYKF9JpIktnfW8GcekhbDM1J4W7IwIhIbmRv-pY6BNU25-KQgcrZiejyXlQ4x1pwhMET32LvZcRuM-H2a1AD08JN-GBzSEI5L5m-TXZiGtbOwXernczIITSb-HUdHnmGqiC8kVC2EXtLBqLSCk-HQ_2mvT2ltpfmmUgaqYg64U8fcT-oNBX5NCzJZPJdqNQFJCQfnmeiDtnx6AC9OE0jcFD0EmMgpiTSTkPjT391Cu1yXNMtXhT0s-1CIHgsOL2XdcaQGiAJeLciHbuAKc2WwpI03NGfCcyYyYAHQVNVg_DGolGjF5Rhba8vSwRhBEUkueru0RI4LVvl2UuEQoseyyoqjFPQxJkeQRHPY9Y8DmcoxzIQFsc-G-lL_3WLMOGVWhSxQi8z6YP2T7gJMvCs8s0ebrxzxzqbISv_OhBY7e1pUAowvjYmYo4_qKw7rbpShOukA-cVygFd5Wcgp83I7U-VoRweXm2bhdMcEzUYyy36KvcowiuiYxANGwqUeCY-PFocoDPc3KcZlKbtPN1oiKhMW4uc7fiwKvec_CYXwRp-mDdcAdLofBuqPgF4Qdk-GCPZDUkQGtsNBHO28Uedolyt04GMpKc6AULoZhPb7Z_QQn0pPMjaxpRK" nonce="cbdc2a345d245087e2ebc920ea665970" charset="UTF-8"></script></head>
+<body>
+    <form>
+        Bookid: <input type="number" name="bid" id="bid"><br>
+        Price of book: <input type="number" name="prce" id="price"><br>
+        <input type="button" value="update" id="update">
+        <p id="res"></p>
+    </form>
+    <script>
+        const update = document.getElementById('update');
+        const result = document.getElementById('res');
+        const bid = document.getElementById('bid');
+        const price = document.getElementById('price');
+
+        update.addEventListener('click', () => {
+            if (bid.value == "" || price.value == "") {
+                result.innerText = "Check book id and price";
+            }
+            else {
+                var data = {
+                    bid: parseInt(bid.value),
+                    price: parseInt(price.value)
+                };
+                fetch(`http://localhost:9000/api/books/${bid.value}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8'
+                    },
+                    body:JSON.stringify(data),
+                  
+                })
+                    .then((res) => {return res.text()})
+                    .then((res) => { result.innerText = res });
+
+            }
+        });
+    </script>
+</body>
+</html>

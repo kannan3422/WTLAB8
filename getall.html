@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getall</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=SSY0W2RyHd26Vb8RJ5rFBbAuG3eVHhDOf5BKmw5WJvjib2tjEL47w9RJkV-LrmMSwN5LdvvqdHHECHMJwoScF3et-sMalCFnKHOgEAtcF8EgTRNPLmi2DjH3TZmq9Wb-yEoNScbxbS7rcSkBj5cevL24u5gqHjtPhzfu229_QnfTCFVrDV-6l_xDxWI-o141-RYhPWfAybI_F6ItcGAmiFByDm00UwI962b3Tx0UWQfrWMziLA_jDJF9CawKIXUSmp_LJVydb164lmeqs4h2SbDUzjBduODIyHFEqA6QeOssnVRSVpCNFqDEGYOUQ0xsSWv19tsxElQi0x6X6rGj3SBs0ds65nB1G96DGuyZacz5Ru2MCp8VEI_V9Q5JT-lt9YKlIxMskG3Lw2ZrGd0YG4iezpR5BqELkY0wtPwyZBQuNbx1aH2EQ1dqEw7-GAjlu2Y8KlgyexXUra0KqD8BjKR_OqDOrG-rGFBAXQ72CBRyxCgREB0axlJUSsNuZCdmrX6f-lTFpFt-Yho6FuMrkeT9pXkJdLn8jHAte6hPCNWRWdEnYTwXsqB2E0XaotLWqCKwnrESN4J1_P6ODe6Wqd7vb1Z6V_BYZ41r50HipNOSio4O6KmUtneDHdNI1XrJvZ4aj_Kn2XPiTKYkbStLM_SCxduFjfk-LUf4nIjtEe8aRjs2WEPxtnP7-t3e-erMgAdtcpGO_xJdN2glQMZXTryDSomVotYeRH5gQf6l5P-ds8VJUkHLGEoKkpp2y2djwQAEa1paRQWhN2rBALErGo6WmteX_hFjw0te1EkAVsfwkiLOwYA-piCrKROq5U7ggc0ZO9A5aojvMgE79enB9VDyfyxhuFCv7LkB4N4ylV1-kSQfKb3qm3O_Ok1V9KVUW8WN0zBIC6YKZMf-5ID7KX9vQDHUi2qkbUW321xquOUlz22yoen9lp-X25iNaOvQrdte4zV2-X8DjHJLdrg3Ofu5bGgEB0hjJod59MXW_aOgeX6T-Z_Exw8xAGpoyLOED3999HFTx149gU8LktGXbsDecuiyq3hwOgMM9q6x-IFlE8oLLiNklUapxTH2f8DyjGToY1ehxgl1ukupOlI-0YKSL_J5dAQSfFM-CVjmjUUb2gcgOAitcHuWlj1NOKhSL4dBvXxDiQOEwSRq4_ENjDE7cHSQAu1A7xHkihQAYRWCIkgVlO064HuYbuM65S2VErYLshyVrk4bZ_3GztdcetboaReUj9n4uZP2ICi4Q_ZGqlG9XR2mIlRSJtAs-PyDKi1kZDEFKJ0-AEzQVn-QhdMOJMuhWYANtRB39HMT50_422Rnt4szV1xUHvfeIEmWa7APuP7ZJG-VJ89g2E5J9bO2x8Nn_v5YSsphjtIQJu4TxEeYND7Y1YZu6bndRX0X8cHFNdY4e3BitmY5t0GQXwagaHgm89thQyKsX1YGI1gQhFTIJz5PTGRhujRxXeMCLfg7MkPNkBSP91IbK_muOqJcG9CMneTkQC66JzeG2XrmmDe-GsCi1auvWXGSHcscW4W-WLW-XyZdWR0V_HRi3zxyIlHq9mpYJDLdriRgzoATC__JZJm3pHYxV_oRDHkTo4t05NF4lJYwbmGxAwtTMm0dhKCWwFnYNVZUjFm4fT2Ea0OhVFjDotTVppO2B-tl" nonce="b03bf880c2c63adc24e90e06adcafe96" charset="UTF-8"></script></head>
+<body>
+    
+    <input type="button" value="getall" id="getall">
+    <p id="res"> </p>
+    <script>
+        const getall = document.getElementById('getall');
+        const result = document.getElementById('res');
+
+        getall.addEventListener('click', () =>{
+            console.log("get clicked");
+        fetch('http://localhost:9000/api/books')
+             .then(res => {return res.json() })
+             .then(res => {result.innerText = JSON.stringify(res) });
+});
+</script>
+</body>
+</html>
